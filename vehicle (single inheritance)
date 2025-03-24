@@ -1,0 +1,30 @@
+class vehicle{
+    String make;
+    String model;
+    vehicle(String make,String model){
+        this.make=make;
+        this.model=model;
+    }
+    void start() {
+        System.out.println(model+" is starting");
+    }
+    void stop() {
+        System.out.println(model+" stopped");
+    }
+}
+class car extends vehicle{
+    car(String make,String model){
+        super(make,model);
+    }
+    void drive(){
+        System.out.println(model+" driving");
+    }
+}
+public class main{
+    public static void main(String[] args){
+        car car=new car("toyota","corolla");
+        car.drive();
+        car.stop();
+        car.start();
+    }
+}
