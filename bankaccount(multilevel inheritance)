@@ -1,0 +1,57 @@
+class bankaccount{
+    double accountnumber;
+    double balance;
+    double amount;
+    bankaccount(double accountnumber,double balance){
+        this.accountnumber=accountnumber;
+        this.balance=balance;
+    }
+    void deposit(double amount){
+        balance+=amount;
+        System.out.println("amt deposited: "+balance);
+    }
+    void withdraw(double amount){
+        if (balance>=amount){
+            balance-=amount;
+            System.out.println("amt withdrawn: "+balance);
+        }
+        else{
+            System.out.println("amt withdrawn is more than balance");
+        }
+    }
+    void displayaccount(){
+        System.out.println("balance in account: "+balance);
+    }
+}
+class savingsaccount extends bankaccount{
+    private static final double interestrate=0.05;
+    savingsaccount(double accountnumber,double balance){
+        super(accountnumber,balance);
+    }
+    void calculateinterest(){
+        double interest=balance*interestrate;
+        balance+=interest;
+        System.out.println("interest added: "+balance);
+    }
+}
+class highinterestsavingsaccount extends savingsaccount{
+    private static final double interestrate=0.10;
+    highinterestsavingsaccount(double accountnumber,double balance){
+        super(accountnumber,balance);
+    }
+    @Override
+    void calculateinterest(){
+        double interest=balance*interestrate;
+        balance+=interest;
+        System.out.println("interest added: "+balance);
+    }
+}
+public class main{
+    public static void main(String[] args){
+        highinterestsavingsaccount his=new highinterestsavingsaccount(12345,1000);
+        his.deposit(1000);
+        his.withdraw(10);
+        his.displayaccount();
+        his.calculateinterest();
+    }
+}
