@@ -1,0 +1,46 @@
+class person{
+    String name;
+    double age;
+    String email;
+    person(String name,double age,String email){
+        this.name=name;
+        this.age=age;
+        this.email=email;
+    }
+    void display_person_info(){
+        System.out.println("Name: "+name);
+        System.out.println("Age: "+age);
+        System.out.println("Email: "+email);
+    }
+}
+class student extends person{
+    String student_id;
+    String major;
+    student(String name,double age,String email,String student_id,String major){
+        super(name,age,email);
+        this.student_id=student_id;
+        this.major=major;
+    }
+    void display_student_info(){
+        System.out.println("STUDENT_ID: "+student_id);
+        System.out.println("major: "+major);
+    }
+}
+class graduatestudent extends student{
+    String thesis_title;
+    graduatestudent(String name,double age,String email,String student_id,String major,String thesis_title){
+        super(name,age,email,student_id,major);
+        this.thesis_title=thesis_title;
+    }
+    void display_graduate_info(){
+        System.out.println("thesis_title: "+thesis_title);
+    }
+}
+public class main{
+    public static void main(String[] args){
+        graduatestudent gs=new graduatestudent("abc",20,"abc@gmail.com","abc123","physics","quantum physics");
+        gs.display_person_info();
+        gs.display_student_info();
+        gs.display_graduate_info();
+    }
+}
