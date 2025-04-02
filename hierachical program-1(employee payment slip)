@@ -1,0 +1,159 @@
+import java.util.Scanner;
+
+class Employee {
+    String empName, empId, address, mailId, mobileNo;
+
+    public Employee(String empName, String empId, String address, String mailId, String mobileNo) {
+        this.empName = empName;
+        this.empId = empId;
+        this.address = address;
+        this.mailId = mailId;
+        this.mobileNo = mobileNo;
+    }
+
+    public void displayEmployeeDetails() {
+        System.out.println("\nEmployee Details:");
+        System.out.println("Name: " + empName);
+        System.out.println("ID: " + empId);
+        System.out.println("Address: " + address);
+        System.out.println("Email: " + mailId);
+        System.out.println("Mobile No: " + mobileNo);
+    }
+}
+
+class Programmer extends Employee {
+    double basicPay;
+
+    public Programmer(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        displayEmployeeDetails();
+        calculateSalary();
+    }
+
+    private void calculateSalary() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("\nProgrammer Pay Slip:");
+        System.out.printf("Basic Pay: %.2f\nDA (97%%): %.2f\nHRA (10%%): %.2f\nPF (12%%): %.2f\nStaff Club Fund (0.1%%): %.2f\n", 
+                          basicPay, da, hra, pf, staffClubFund);
+        System.out.printf("Gross Salary: %.2f\nNet Salary: %.2f\n", grossSalary, netSalary);
+    }
+}
+
+class AssistantProfessor extends Employee {
+    double basicPay;
+
+    public AssistantProfessor(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        displayEmployeeDetails();
+        calculateSalary();
+    }
+
+    private void calculateSalary() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("\nAssistant Professor Pay Slip:");
+        System.out.printf("Basic Pay: %.2f\nDA (97%%): %.2f\nHRA (10%%): %.2f\nPF (12%%): %.2f\nStaff Club Fund (0.1%%): %.2f\n",
+                          basicPay, da, hra, pf, staffClubFund);
+        System.out.printf("Gross Salary: %.2f\nNet Salary: %.2f\n", grossSalary, netSalary);
+    }
+}
+
+class AssociateProfessor extends Employee {
+    double basicPay;
+
+    public AssociateProfessor(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        displayEmployeeDetails();
+        calculateSalary();
+    }
+
+    private void calculateSalary() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("\nAssociate Professor Pay Slip:");
+        System.out.printf("Basic Pay: %.2f\nDA (97%%): %.2f\nHRA (10%%): %.2f\nPF (12%%): %.2f\nStaff Club Fund (0.1%%): %.2f\n",
+                          basicPay, da, hra, pf, staffClubFund);
+        System.out.printf("Gross Salary: %.2f\nNet Salary: %.2f\n", grossSalary, netSalary);
+    }
+}
+
+class Professor extends Employee {
+    double basicPay;
+
+    public Professor(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        displayEmployeeDetails();
+        calculateSalary();
+    }
+
+    private void calculateSalary() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("\nProfessor Pay Slip:");
+        System.out.printf("Basic Pay: %.2f\nDA (97%%): %.2f\nHRA (10%%): %.2f\nPF (12%%): %.2f\nStaff Club Fund (0.1%%): %.2f\n",
+                          basicPay, da, hra, pf, staffClubFund);
+        System.out.printf("Gross Salary: %.2f\nNet Salary: %.2f\n", grossSalary, netSalary);
+    }
+}
+
+public class main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Employee ID: ");
+        String id = scanner.nextLine();
+        System.out.print("Enter Address: ");
+        String address = scanner.nextLine();
+        System.out.print("Enter Email: ");
+        String email = scanner.nextLine();
+        System.out.print("Enter Mobile No: ");
+        String mobile = scanner.nextLine();
+        System.out.print("Enter Basic Pay: ");
+        double basicPay = scanner.nextDouble();
+
+        Programmer programmer = new Programmer(name, id, address, email, mobile, basicPay);
+        programmer.generatePaySlip();
+
+        scanner.close();
+    }
+}
