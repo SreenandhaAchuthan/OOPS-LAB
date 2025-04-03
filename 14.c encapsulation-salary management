@@ -1,0 +1,39 @@
+class Employee {
+    private String name;
+    private double salary;
+    public Employee(String name, double salary) {
+        this.name = name;
+        if (salary > 0) {
+            this.salary = salary;
+        } else {
+            System.out.println("Invalid salary amount. Setting to default 0.");
+            this.salary = 0;
+        }
+    }
+    public String getName() {
+        return name;
+    }
+    public double getSalary() {
+        return salary;
+    }
+    public void setSalary(double salary) {
+        if (salary > 0) {
+            this.salary = salary;
+        } else {
+            System.out.println("Salary cannot be negative.");
+        }
+    }
+    public void displayEmployee() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Salary: " + salary);
+    }
+}
+public class main{
+    public static void main(String[] args) {
+        Employee emp = new Employee("Bob", 70000);
+        emp.displayEmployee();
+        emp.setSalary(-5000);  
+        emp.setSalary(80000);  
+        emp.displayEmployee();
+    }
+}
