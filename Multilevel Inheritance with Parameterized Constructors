@@ -1,0 +1,25 @@
+class vehicle {
+    vehicle(String type) {
+        System.out.println("Vehicle Type: " + type);
+    }
+}
+
+class car extends vehicle {
+    Car(String brand) {
+        super("Car");
+        System.out.println("Car Brand: " + brand);
+    }
+}
+
+class sportsCar extends car {
+    sportsCar(String brand, int maxSpeed) {
+        super(brand);
+        System.out.println("Max Speed: " + maxSpeed + " km/h");
+    }
+}
+
+public class main {
+    public static void main(String[] args) {
+        SportsCar obj = new SportsCar("Ferrari", 350);
+    }
+}
