@@ -1,0 +1,51 @@
+class Device {
+    String brand;
+
+    Device(String brand) {
+        this.brand = brand;
+        System.out.println(brand + " Device Initialized.");
+    }
+
+    void powerOn() {
+        System.out.println(brand + " Device is powered ON.");
+    }
+}
+
+interface InternetEnabled {
+    void connectToWiFi(String network);
+}
+
+interface BatteryPowered {
+    void batteryBackup();
+}
+
+class Smartphone extends Device implements InternetEnabled {
+    Smartphone(String brand) {
+        super(brand);
+        System.out.println(brand + " Smartphone Initialized.");
+    }
+
+    public void connectToWiFi(String network) {
+        System.out.println("Connected to WiFi: " + network);
+    }
+}
+
+class SmartWatch extends Smartphone implements BatteryPowered {
+    SmartWatch(String brand) {
+        super(brand);
+        System.out.println(brand + " SmartWatch Initialized.");
+    }
+
+    public void batteryBackup() {
+        System.out.println("SmartWatch battery backup: 24 hours.");
+    }
+}
+
+public class main{
+    public static void main(String[] args) {
+        SmartWatch watch = new SmartWatch("Apple");
+        watch.powerOn();
+        watch.connectToWiFi("Home_WiFi");
+        watch.batteryBackup();
+    }
+}
