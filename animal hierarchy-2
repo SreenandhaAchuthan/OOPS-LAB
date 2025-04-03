@@ -1,0 +1,112 @@
+class Animal {
+    String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void sound() {
+        System.out.println("Some generic animal sound");
+    }
+
+    public void move() {
+        System.out.println(this.name + " is moving");
+    }
+}
+
+class Mammal extends Animal {
+    int age;
+
+    public Mammal(String name, int age) {
+        super(name);  // Calling Animal's constructor
+        this.age = age;
+    }
+
+    @Override
+    public void sound() {
+        System.out.println(this.name + " makes a mammal sound");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(this.name + " is walking");
+    }
+}
+
+class Bird extends Animal {
+    boolean canFly;
+
+    public Bird(String name, boolean canFly) {
+        super(name);  // Calling Animal's constructor
+        this.canFly = canFly;
+    }
+
+    @Override
+    public void sound() {
+        System.out.println(this.name + " chirps");
+    }
+
+    @Override
+    public void move() {
+        if (canFly) {
+            System.out.println(this.name + " is flying");
+        } else {
+            System.out.println(this.name + " is walking");
+        }
+    }
+}
+
+class Dog extends Mammal {
+    String breed;
+
+    public Dog(String name, int age, String breed) {
+        super(name, age);  // Calling Mammal's constructor
+        this.breed = breed;
+    }
+
+    @Override
+    public void sound() {
+        System.out.println(this.name + " barks");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(this.name + " is running");
+    }
+
+    public void fetch() {
+        System.out.println(this.name + " is fetching a ball!");
+    }
+}
+
+class Parrot extends Bird {
+    String color;
+
+    public Parrot(String name, boolean canFly, String color) {
+        super(name, canFly);  // Calling Bird's constructor
+        this.color = color;
+    }
+
+    @Override
+    public void sound() {
+        System.out.println(this.name + " squawks");
+    }
+
+    public void talk() {
+        System.out.println(this.name + " says: Hello!");
+    }
+}
+
+public class AnimalTest {
+    public static void main(String[] args) {
+        Dog dog = new Dog("Rex", 5, "Golden Retriever");
+        Parrot parrot = new Parrot("Polly", true, "Green");
+        dog.sound();
+        dog.move();
+        dog.fetch();
+        System.out.println();
+        parrot.sound();
+        parrot.move();
+        parrot.talk();
+    }
+}
