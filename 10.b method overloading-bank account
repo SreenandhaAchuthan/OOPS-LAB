@@ -1,0 +1,32 @@
+class BankAccount {
+    private double balance;
+
+    BankAccount(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    void deposit(int amount) {
+        balance += amount;
+        System.out.println("Deposited ₹" + amount + ". New Balance: ₹" + balance);
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited " + amount + ". New Balance: " + balance);
+    }
+
+    void deposit(String chequeNumber) {
+        System.out.println("Cheque " + chequeNumber + " submitted for processing.");
+        balance += 5000; 
+        System.out.println("Cheque Cleared.New Balance: " + balance);
+    }
+}
+public class main{
+    public static void main(String[] args) {
+        BankAccount myAccount = new BankAccount(10000);
+        
+        myAccount.deposit(2000);           
+        myAccount.deposit(1520.75);        
+        myAccount.deposit("CHQ12345");     
+    }
+}
