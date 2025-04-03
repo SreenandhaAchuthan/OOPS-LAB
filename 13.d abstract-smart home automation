@@ -1,0 +1,47 @@
+abstract class SmartDevice {
+    String name;
+    SmartDevice(String name) {
+        this.name = name;
+    }
+    abstract void turnOn();
+    abstract void turnOff();
+    void showDevice() {
+        System.out.println("Device: " + name);
+    }
+}
+class SmartBulb extends SmartDevice {
+    SmartBulb(String name) {
+        super(name);
+    }
+    void turnOn() {
+        System.out.println(name + " is now ON with warm lighting.");
+    }
+    void turnOff() {
+        System.out.println(name + " is now OFF.");
+    }
+}
+class SmartAC extends SmartDevice {
+    int temperature;
+    SmartAC(String name, int temperature) {
+        super(name);
+        this.temperature = temperature;
+    }
+    void turnOn() {
+        System.out.println(name + " is ON, set to " + temperature + "°C.");
+    }
+    void turnOff() {
+        System.out.println(name + " is OFF.");
+    }
+}
+public class main {
+    public static void main(String[] args) {
+        SmartDevice bulb = new SmartBulb("Philips SmartBulb");
+        SmartDevice ac = new SmartAC("Samsung SmartAC", 22);
+        bulb.showDevice();
+        bulb.turnOn();
+        bulb.turnOff();
+        ac.showDevice();
+        ac.turnOn();
+        ac.turnOff();
+    }
+}
