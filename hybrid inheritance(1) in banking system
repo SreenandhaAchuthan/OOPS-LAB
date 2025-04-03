@@ -1,0 +1,34 @@
+class Account {
+    void accountDetails() {
+        System.out.println("This is a bank account.");
+    }
+}
+
+interface Savings {
+    void interestRate();
+}
+
+interface Loan {
+    void loanEligibility();
+}
+
+class SavingsAccount extends Account implements Savings {
+    public void interestRate() {
+        System.out.println("Savings Account Interest Rate: 4%.");
+    }
+}
+
+class HomeLoan extends SavingsAccount implements Loan {
+    public void loanEligibility() {
+        System.out.println("Home Loan eligibility requires a good credit score.");
+    }
+}
+
+public class main{
+    public static void main(String[] args) {
+        HomeLoan obj = new HomeLoan();
+        obj.accountDetails();   
+        obj.interestRate();      
+        obj.loanEligibility();   
+    }
+}
