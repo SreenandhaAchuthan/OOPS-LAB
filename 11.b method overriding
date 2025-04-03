@@ -1,0 +1,46 @@
+class Bank {
+    double getInterestRate() throws Exception {
+        return 0; 
+    }
+}
+
+class SBI extends Bank {
+    @Override
+    double getInterestRate() {
+        return 5.4; 
+    }
+}
+
+class HDFC extends Bank {
+    @Override
+    double getInterestRate() {
+        return 6.7;  
+    }
+}
+
+class ICICI extends Bank {
+    @Override
+    double getInterestRate() throws Exception {
+        double rate = 7.2;
+        if (rate < 0) {
+            throw new Exception("Interest rate cannot be negative.");
+        }
+        return rate;  
+    }
+}
+
+public class main {
+    public static void main(String[] args) {
+        try {
+            Bank myBank1 = new SBI();
+            Bank myBank2 = new HDFC();
+            Bank myBank3 = new ICICI();
+
+            System.out.println("SBI Interest Rate: " + myBank1.getInterestRate() + "%");
+            System.out.println("HDFC Interest Rate: " + myBank2.getInterestRate() + "%");
+            System.out.println("ICICI Interest Rate: " + myBank3.getInterestRate() + "%");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
