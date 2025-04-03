@@ -1,0 +1,123 @@
+class Publication {
+    String title;
+    int year;
+
+    Publication(String title) {
+        this.title = title;
+        this.year = -1;  
+        System.out.println("Publication Created: " + title);
+    }
+
+    Publication(String title, int year) {
+        this.title = title;
+        this.year = year;
+        System.out.println("Publication Created: " + title + " (" + year + ")");
+    }
+
+    void displayDetails() {
+        System.out.println("Title: " + title);
+        if (year != -1) {
+            System.out.println("Year: " + year);
+        }
+    }
+}
+
+class Book extends Publication {
+    String author, publisher;
+
+    Book(String title, String author) {
+        super(title);
+        this.author = author;
+        this.publisher = "Unknown";
+        System.out.println("Book Created: " + title + " by " + author);
+    }
+
+    Book(String title, String author, String publisher, int year) {
+        super(title, year);
+        this.author = author;
+        this.publisher = publisher;
+        System.out.println("Book Created: " + title + " by " + author + " (Publisher: " + publisher + ")");
+    }
+
+    @Override
+    void displayDetails() {
+        super.displayDetails();
+        System.out.println("Author: " + author);
+        System.out.println("Publisher: " + publisher);
+    }
+}
+
+class Journal extends Publication {
+    String ISSN;
+    String issueMonth;
+
+    Journal(String title, String ISSN) {
+        super(title);
+        this.ISSN = ISSN;
+        this.issueMonth = "Not Specified";
+        System.out.println("Journal Created: " + title + " (ISSN: " + ISSN + ")");
+    }
+
+    Journal(String title, String ISSN, String issueMonth, int year) {
+        super(title, year);
+        this.ISSN = ISSN;
+        this.issueMonth = issueMonth;
+        System.out.println("Journal Created: " + title + " (ISSN: " + ISSN + ", Issue: " + issueMonth + ")");
+    }
+
+    @Override
+    void displayDetails() {
+        super.displayDetails();
+        System.out.println("ISSN: " + ISSN);
+        System.out.println("Issue Month: " + issueMonth);
+    }
+}
+
+class ResearchPaper extends Publication {
+    String researcher;
+    double impactFactor;
+
+    ResearchPaper(String title, String researcher) {
+        super(title);
+        this.researcher = researcher;
+        this.impactFactor = -1; // Default value
+        System.out.println("Research Paper Created: " + title + " by " + researcher);
+    }
+
+    ResearchPaper(String title, String researcher, double impactFactor, int year) {
+        super(title, year);
+        this.researcher = researcher;
+        this.impactFactor = impactFactor;
+        System.out.println("Research Paper Created: " + title + " by " + researcher + " (Impact Factor: " + impactFactor + ")");
+    }
+
+    @Override
+    void displayDetails() {
+        super.displayDetails();
+        System.out.println("Researcher: " + researcher);
+        if (impactFactor != -1) {
+            System.out.println("Impact Factor: " + impactFactor);
+        }
+    }
+}
+
+public class main {
+    public static void main(String[] args) {
+        System.out.println("---- Creating Publications ----\n");
+
+        Publication[] library = new Publication[]{
+            new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 1988),
+            new Journal("Nature Physics", "1476-4687", "March", 2024),
+            new ResearchPaper("AI in Medicine", "Dr. John Doe", 4.5, 2023),
+            new Book("Inferno", "Dan Brown"), // Without Publisher
+            new Journal("IEEE Transactions", "0018-9340"), // Without Issue Month
+            new ResearchPaper("Quantum Computing", "Dr. Alice Smith") // Without Impact Factor
+        };
+
+        System.out.println("\n---- Displaying Publication Details ----\n");
+        for (Publication p : library) {
+            p.displayDetails();
+            System.out.println("---------------------------");
+        }
+    }
+}
