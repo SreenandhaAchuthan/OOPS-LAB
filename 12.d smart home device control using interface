@@ -1,0 +1,33 @@
+interface SmartDevice {
+    void turnOn(); 
+    default void deviceInfo() { 
+        System.out.println("This is a smart device.");
+    }
+    static void updateFirmware() {  // Static method
+        System.out.println("Firmware updated successfully.");
+    }
+}
+class SmartLight implements SmartDevice {
+    public void turnOn() {
+        System.out.println("Smart Light is now ON.");
+    }
+}
+class SmartSpeaker implements SmartDevice {
+    public void turnOn() {
+        System.out.println("Smart Speaker is playing music.");
+    }
+    public void deviceInfo() {
+        System.out.println("This is a voice-controlled smart speaker.");
+    }
+}
+public class main {
+    public static void main(String[] args) {
+        SmartDevice light = new SmartLight();
+        SmartDevice speaker = new SmartSpeaker();
+        light.turnOn();
+        light.deviceInfo();  
+        speaker.turnOn();
+        speaker.deviceInfo(); 
+        SmartDevice.updateFirmware();
+    }
+}
