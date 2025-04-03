@@ -1,0 +1,59 @@
+class Product {
+    private String name;
+    private double price;
+    private int stock;
+    public Product(String name, double price, int stock) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+    public String getName() {
+        return name;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public int getStock() {
+        return stock;
+    }
+    public void updateStock(int quantity) {
+        if (quantity > 0 && quantity <= stock) {
+            stock -= quantity;
+            System.out.println(quantity + " " + name + "(s) purchased successfully.");
+        } else {
+            System.out.println("Invalid quantity or Out of Stock.");
+        }
+    }
+}
+class ShoppingCart {
+    private Product product;
+    private int quantity;
+
+    public ShoppingCart(Product product, int quantity) {
+        this.product = product;
+        if (quantity > 0 && quantity <= product.getStock()) {
+            this.quantity = quantity;
+            product.updateStock(quantity);
+        } else {
+            System.out.println("Cannot add this quantity to cart.");
+            this.quantity = 0;
+        }
+    }
+    public void checkout() {
+        if (quantity > 0) {
+            System.out.println("Checkout Successful. Total Price: " + (quantity * product.getPrice()));
+        } else {
+            System.out.println("No items to checkout.");
+        }
+    }
+}
+public class main {
+    public static void main(String[] args) {
+        Product p1 = new Product("Laptop", 75000, 5);
+        Product p2 = new Product("Headphones", 2000, 10);
+        ShoppingCart cart1 = new ShoppingCart(p1, 2);
+        ShoppingCart cart2 = new ShoppingCart(p2, 12); 
+        cart1.checkout();
+        cart2.checkout();
+    }
+}
