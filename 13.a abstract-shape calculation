@@ -1,0 +1,22 @@
+abstract class Shape {
+    abstract void area(); 
+    void display() { 
+        System.out.println("This is a shape.");
+    }
+}
+class Circle extends Shape {
+    double radius;
+    Circle(double radius) {
+        this.radius = radius;
+    }
+    void area() {
+        System.out.println("Area of Circle: " + (Math.PI * radius * radius));
+    }
+}
+public class main {
+    public static void main(String[] args) {
+        Shape s = new Circle(5);
+        s.display();
+        s.area();
+    }
+}
