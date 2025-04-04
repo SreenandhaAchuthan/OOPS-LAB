@@ -1,0 +1,65 @@
+package banking;
+ 
+public class Account {
+    private double balance = 1000.0; 
+ 
+    public void publicMethod() {
+        System.out.println("Public Method: Accessible everywhere.");
+    }
+ 
+    protected void protectedMethod() {
+        System.out.println("Protected Method: Accessible within package and by subclasses.");
+    }
+ 
+    void defaultMethod() {
+        System.out.println("Default Method: Accessible within the same package only.");
+    }
+ 
+    private void privateMethod() {
+        System.out.println("Private Method: Accessible only within this class.");
+    }
+    public void accessPrivateMethod() {
+        privateMethod(); 
+    }
+}
+
+DEFINE SUBCLASS IN BANKING PACKAGE:
+package bankingApp;
+ 
+import banking.Account;
+ 
+public class SubAccount extends Account {
+    public void accessMethods() {
+        System.out.println("Accessing methods from SubAccount (Subclass in different package):");
+        publicMethod();       //  Allowed (public)
+        protectedMethod();    //  Allowed (protected, accessible via inheritance)
+        // defaultMethod();   //  Not Allowed (default not accessible outside the package)
+        // privateMethod();   //  Not Allowed (private not accessible even in subclass)
+    }
+}
+DEFINE NON-SUBCLASS IN DIFFERENT PACKAGE:
+package bankingApp;
+ 
+import banking.Account;
+ 
+public class NonSubAccount {
+    public void accessMethods() {
+        Account acc = new Account();
+        System.out.println("Accessing methods from NonSubAccount (Non-subclass in different package):");
+        acc.publicMethod();   // Allowed (public)
+        // acc.protectedMethod(); //  Not Allowed (protected not accessible without inheritance)
+        // acc.defaultMethod();   //  Not Allowed (default not accessible outside package)
+        // acc.privateMethod();   //  Not Allowed (private is never accessible)
+    }
+}
+DEFINE MAIN CLASS:
+package bankingApp;
+ 
+public class MainClass {
+    public static void main(String[] args) {
+        SubAccount subAcc = new SubAccount();
+        subAcc.accessMethods(); 
+        NonSubAccount nonSubAcc = new NonSubAccount();
+        nonSubAcc.accessMethods(); 
+    }
+}
