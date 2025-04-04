@@ -1,0 +1,20 @@
+DEFINE ADDITION CLASS:
+package mathoperations;
+ 
+public class Addition {
+    public static int addNumbers(int a, int b) {
+        return a + b;
+    }
+}
+
+DEFINE MAIN CLASS:
+package mainpackage;
+ 
+import mathoperations.Addition; 
+ 
+public class MainClass {
+    public static void main(String[] args) {
+        int result = Addition.addNumbers(7, 3);
+        System.out.println("Sum: " + result); 
+    }
+}
